@@ -23,7 +23,7 @@ then
   php frosh-plugin-upload.phar ext:update $(pwd)/$NAME/
 fi
 
-if [ $COMMAND == 'upgrade' ]
+if [ $COMMAND == 'upload' ]
 then
   php frosh-plugin-upload.phar --skipCodeReview ext:upload $(pwd)/*.zip
 fi
