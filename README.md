@@ -1,2 +1,2 @@
-# Shopware Store Deploy Github Action
-Deploys Plugins to Shopware Account.
+# Shopware Plugin Validator Github Action
+Validates Shopware Plugins.
