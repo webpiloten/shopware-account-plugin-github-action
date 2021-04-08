@@ -14,11 +14,13 @@ inputs:
 runs:
   using: composite
   steps:
-    
-    - name: Download Plugin
-      if: ${{ command == 'validate' || command == 'upload' }}
-      run: wget 'https://github.com/FriendsOfShopware/FroshPluginUploader/releases/download/${{ inputs.version }}/frosh-plugin-upload.phar' -O frosh-plugin-upload.phar
+    - run: ${{ github.action_path }}/frosh-plugin-uploader.sh
       shell: bash
+      
+    #- name: Download Plugin
+     # if: ${{ command == 'validate' || command == 'upload' }}
+      #run: wget 'https://github.com/FriendsOfShopware/FroshPluginUploader/releases/download/${{ inputs.version }}/frosh-plugin-upload.phar' -O frosh-plugin-upload.phar
+      #shell: bash
 
     #- run: php frosh-plugin-upload.phar ext:zip ${PLUGIN_NAME}
       #if: ${{ command == 'validate' || command == 'upload' }}
