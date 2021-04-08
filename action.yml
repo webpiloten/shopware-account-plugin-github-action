@@ -1,5 +1,5 @@
-name: 'Shopware Plugin Validator Github Action'
-description: 'Validates Shopware Plugins.'
+name: 'Shopware Account Plugin Github Action'
+description: 'Plugin Actions with Shopware Account.'
 author: 'webpiloten.'
 
 inputs:
@@ -7,6 +7,9 @@ inputs:
     description: 'Release version of FroshPluginUploader'
     required: false
     default: '0.3.11'
+  command:
+    description: 'Commands available: validate | update | upload'
+    required: true
 
 runs:
   using: composite
@@ -14,8 +17,18 @@ runs:
     - run: wget 'https://github.com/FriendsOfShopware/FroshPluginUploader/releases/download/${{ inputs.version }}/frosh-plugin-upload.phar' -O frosh-plugin-upload.phar
       shell: bash
 
-    - run: php frosh-plugin-upload.phar ext:zip ${PLUGIN_NAME}
+    - if: ${{ command == 'validate' || command == 'upload' }}
+      run: php frosh-plugin-upload.phar ext:zip ${PLUGIN_NAME}
       shell: bash
 
-    - run: php frosh-plugin-upload.phar ext:validate --create $(pwd)/*.zip
+    - if: ${{ command == 'validate' }}
+      run: php frosh-plugin-upload.phar ext:validate --create $(pwd)/*.zip
+      shell: bash
+      
+    - if: ${{ command == 'update' }}
+      run: php frosh-plugin-upload.phar ext:update $(pwd)/ ${{ github.event.repository.name }}/
+      shell: bash
+
+    - if: ${{ command == 'upload' }}
+      run: php frosh-plugin-upload.phar --skipCodeReview ext:upload $(pwd)/*.zip
       shell: bash
