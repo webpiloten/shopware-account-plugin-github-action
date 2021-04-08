@@ -1,2 +1,2 @@
-# Shopware Plugin Validator Github Action
-Validates Shopware Plugins.
+# Shopware Account Plugin Github Action
+Plugin Actions with Shopware Account.
