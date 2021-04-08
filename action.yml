@@ -1,5 +1,5 @@
 name: 'Shopware Plugin Validator Github Action'
-description: 'Deploys Plugins to Shopware Account.'
+description: 'Validates Shopware Plugins.'
 author: 'webpiloten.'
 
 inputs:
