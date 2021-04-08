@@ -3,7 +3,7 @@ description: 'Validates Shopware Plugins.'
 author: 'webpiloten.'
 
 inputs:
-  version:  # id of input
+  version:
     description: 'Release version of FroshPluginUploader'
     required: false
     default: '0.3.11'
