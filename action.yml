@@ -14,5 +14,5 @@ inputs:
 runs:
   using: composite
   steps:
-    - run: ${{ github.action_path }}/frosh-plugin-uploader.sh ${{ version }} ${{ command }} ${{ github.event.repository.name }}
+    - run: ${{ github.action_path }}/frosh-plugin-uploader.sh ${{ inputs.version }} ${{ inputs.command }} ${{ github.event.repository.name }}
       shell: bash
