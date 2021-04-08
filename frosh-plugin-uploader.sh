@@ -25,5 +25,5 @@ fi
 
 if [ $COMMAND == 'upload' ]
 then
-  php frosh-plugin-upload.phar --skipCodeReview ext:upload $(pwd)/*.zip
+  php frosh-plugin-upload.phar ext:upload $(pwd)/*.zip
 fi
