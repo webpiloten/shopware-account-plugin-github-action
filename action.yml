@@ -1,4 +1,4 @@
-name: 'Shopware Store Deploy Github Action'
+name: 'Shopware Plugin Validator Github Action'
 description: 'Deploys Plugins to Shopware Account.'
 author: 'webpiloten.'
 
