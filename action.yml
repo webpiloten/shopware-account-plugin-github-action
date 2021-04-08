@@ -14,21 +14,24 @@ inputs:
 runs:
   using: composite
   steps:
-    - run: wget 'https://github.com/FriendsOfShopware/FroshPluginUploader/releases/download/${{ inputs.version }}/frosh-plugin-upload.phar' -O frosh-plugin-upload.phar
-      shell: bash
-
-    - run: php frosh-plugin-upload.phar ext:zip ${PLUGIN_NAME}
+    
+    - name: Download Plugin
       if: ${{ command == 'validate' || command == 'upload' }}
+      run: wget 'https://github.com/FriendsOfShopware/FroshPluginUploader/releases/download/${{ inputs.version }}/frosh-plugin-upload.phar' -O frosh-plugin-upload.phar
       shell: bash
 
-    - run: php frosh-plugin-upload.phar ext:validate --create $(pwd)/*.zip
-      if: ${{ command == 'validate' }}
-      shell: bash
+    #- run: php frosh-plugin-upload.phar ext:zip ${PLUGIN_NAME}
+      #if: ${{ command == 'validate' || command == 'upload' }}
+      #shell: bash
+
+    #- run: php frosh-plugin-upload.phar ext:validate --create $(pwd)/*.zip
+      #if: ${{ command == 'validate' }}
+      #shell: bash
       
-    - run: php frosh-plugin-upload.phar ext:update $(pwd)/ ${{ github.event.repository.name }}/
-      if: ${{ command == 'update' }}
-      shell: bash
+    #- run: php frosh-plugin-upload.phar ext:update $(pwd)/ ${{ github.event.repository.name }}/
+      #if: ${{ command == 'update' }}
+      #shell: bash
 
-    - run: php frosh-plugin-upload.phar --skipCodeReview ext:upload $(pwd)/*.zip
-      if: ${{ command == 'upload' }}
-      shell: bash
+    #- run: php frosh-plugin-upload.phar --skipCodeReview ext:upload $(pwd)/*.zip
+      #if: ${{ command == 'upload' }}
+      #shell: bash
