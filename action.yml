@@ -1,1 +1,21 @@
+name: 'Shopware Store Deploy Github Action'
+description: 'Deploys Plugins to Shopware Account.'
+author: 'webpiloten.'
 
+inputs:
+  version:  # id of input
+    description: 'Release version of FroshPluginUploader'
+    required: false
+    default: '0.3.11'
+
+runs:
+  using: composite
+  steps:
+    - run: wget 'https://github.com/FriendsOfShopware/FroshPluginUploader/releases/download/${{ inputs.version }}/frosh-plugin-upload.phar' -O frosh-plugin-upload.phar
+      shell: bash
+
+    - run: php frosh-plugin-upload.phar ext:zip ${PLUGIN_NAME}
+      shell: bash
+
+    - run: php frosh-plugin-upload.phar ext:validate --create $(pwd)/*.zip
+      shell: bash
