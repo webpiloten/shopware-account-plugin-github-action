@@ -13,7 +13,7 @@ env:
     
     # composer-actions.json
     "require": {
-        "shopware/core": "~6.3"
+        "shopware/core": "~6.4"
     },
     
     COMPOSER: "composer-actions.json"
